@@ -6,6 +6,7 @@ import Favourites from './Favourites';
 import SignInPage from './Auth/SingInPage';
 import SignUpPage from './Auth/SingUpPage';
 import Main from './Main';
+import Cart from '../components/Cart1/Cart'
 
 export default function App() {
   return (

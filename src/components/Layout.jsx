@@ -17,6 +17,7 @@ export default function Layout({ initState }) {
         />
         <script defer src="/js/app.js" />
         <script defer src="/js/vendor.js" />
+        
         <title>Document</title>
       </head>
       <body>

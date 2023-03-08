@@ -2,7 +2,11 @@ import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
+<<<<<<< HEAD
 import authRouter from "./routes/authRouter";
+=======
+import authRouters from './routes/authRouters';
+>>>>>>> origin/main
 
 const PORT = 3000;
 const app = express();
@@ -17,8 +21,44 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  const initState = { hello: 'world' };
-  res.render('Layout', initState);
+  res.render('Layout', {});
+});
+
+app.use('/user/', authRouters);
+
+
+
+app.get('/cart', (req, res) => {
+  res.render('Layout', {});
+});
+
+app.get('/favourites', (req,res)=>{
+  res.render('Layout',{})
+});
+
+app.get('/sockscreate', (req,res)=>{
+  res.render('Layout',{})
+});
+
+
+
+
+
+
+
+app.use('/user/', authRouters);
+
+
+app.get('/cart', (req, res) => {
+  res.render('Layout', {});
+});
+
+app.get('/favourites', (req, res) => {
+  res.render('Layout', {});
+});
+
+app.get('/cart', (req, res) => {
+  res.render('Layout', {});
 });
 app.use("/api/auth", authRouter);
 

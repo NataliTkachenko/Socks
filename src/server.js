@@ -16,23 +16,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  const initState = { hello: 'world' };
-  res.render('Layout', initState);
+  res.render('Layout', {});
 });
-
-app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
-
 
 app.get('/cart', (req,res)=>{
   res.render('Layout',{})
 });
-
 
 app.get('/favourites', (req,res)=>{
   res.render('Layout',{})
 });
 
 
-app.get('/cart', (req,res)=>{
-  res.render('Layout',{})
-});
+app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
+
+
+

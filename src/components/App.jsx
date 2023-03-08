@@ -1,9 +1,11 @@
 import React from 'react';
-import Cart from '../components/Cart';
-import Navbar from '../components/Navbar';
-import Favourites from '../components/Favourites';
 import { Route, Routes } from 'react-router-dom';
-import Main from '../components/Main';
+import Cart from './Cart';
+import Navbar from './Navbar';
+import Favourites from './Favourites';
+import SignInPage from './Auth/SingInPage';
+import SignUpPage from './Auth/SingUpPage';
+import Main from './Main';
 
 export default function App() {
   return (
@@ -11,13 +13,12 @@ export default function App() {
       <Navbar />
       <Routes>
          <Route path="/" element={<Main  />} />
-        <Route path="/favourites" element={<Favourites  />} />
-        <Route path="/cart" element={<Cart  />} />
-        {/* <Route path="/user/signup" element={<SignUpPage />} />
-        <Route path="/user/signin" element={<SignInPage />} /> */}
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/user/signup" element={<SignUpPage />} />
+        <Route path="/user/signin" element={<SignInPage />} />
       </Routes>
 
-      
     </div>
-  )
+  );
 }

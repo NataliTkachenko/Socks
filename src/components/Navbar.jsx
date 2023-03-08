@@ -17,6 +17,9 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/">Главная</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/favourites">Избранное</a>
             </li>
             <li className="nav-item">
@@ -25,10 +28,10 @@ export default function Navbar() {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button className="nav-link btn" style={btnStyles} href="/user/signup">Зарегистрироваться</button>
+             <a href="/user/signup"><button className="nav-link btn" style={btnStyles} >Зарегистрироваться</button></a>
             </li>
             <li className="nav-item">
-              <button className="nav-link btn" style={btnStyles} href="/user/signin">Войти</button>
+              <a href="/user/signin"> <button className="nav-link btn" style={btnStyles} >Войти</button></a>
             </li>
           </ul>
         </div>

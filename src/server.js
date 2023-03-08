@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
+import authRouter from "./routes/authRouter";
 
 const PORT = 3000;
 const app = express();
@@ -19,5 +20,6 @@ app.get('/', (req, res) => {
   const initState = { hello: 'world' };
   res.render('Layout', initState);
 });
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

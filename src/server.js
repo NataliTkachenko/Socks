@@ -21,3 +21,18 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
+
+
+app.get('/cart', (req,res)=>{
+  res.render('Layout',{})
+});
+
+
+app.get('/favourites', (req,res)=>{
+  res.render('Layout',{})
+});
+
+
+app.get('/cart', (req,res)=>{
+  res.render('Layout',{})
+});

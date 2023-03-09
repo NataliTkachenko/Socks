@@ -25,7 +25,7 @@ const sessionConfig = {
   secret: process.env.SESSION_SECRET ?? 'test',
   resave: true,
   store: new FileStore(),
-  saveUninitialized: false,
+  saveUninitialized: true,
   cookie: {
     maxAge: 1000 * 60 * 60 * 12,
     httpOnly: true,
@@ -66,13 +66,8 @@ app.get('/sockscreate', (req, res) => {
 
 // app.use('/api/auth', authRouter);
 
-
-
-
 app.get('/share', (req, res) => {
   res.render('Layout', {});
 });
-
-
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

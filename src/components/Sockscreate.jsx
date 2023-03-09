@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function Sockscreate() {
@@ -5,7 +6,7 @@ export default function Sockscreate() {
   // const [color, setColor] = useState('#FFFFFF');
   // const [pattern, setPattern] = useState('');
   // const [image, setImage] = useState('');
-  const [sock, setSock] = useState({color: '#FFFFFF', pattern: '', image: '' });
+  const [sock, setSock] = useState({ color: '#FFFFFF', pattern: '', image: '' });
 
   const handleColorClick = (event) => {
     setSock((prev) => ({ ...prev, color: event.target.dataset.value }));

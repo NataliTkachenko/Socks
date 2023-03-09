@@ -25,7 +25,7 @@ const sessionConfig = {
   secret: process.env.SESSION_SECRET ?? 'test',
   resave: true,
   store: new FileStore(),
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 12,
     httpOnly: true,

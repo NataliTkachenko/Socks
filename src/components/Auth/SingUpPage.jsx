@@ -40,7 +40,7 @@ export default function SignUp() {
             type="submit"
             className="btn"
             style={{
-              borderRadius: '13px', height: '40px', width: '150px', backgroundColor: '#1C8552', color: 'white', fontWeight: 'bold',
+              borderRadius: '13px', height: '40px', width: '200px', backgroundColor: '#1C8552', color: 'white', fontWeight: 'bold',
             }}
           >
             Зарегистрироваться

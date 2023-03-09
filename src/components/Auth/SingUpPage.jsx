@@ -1,64 +1,3 @@
-<<<<<<< HEAD
-import axios from "axios";
-import React from "react";
-
-export default function SignUpPage() {
-  const submitHandler = async (e) => {
-    e.preventDefault(); // чтоб не обновлялась страница
-    const res = await axios.post(
-      "/api/auth/signup",
-      Object.fromEntries(new FormData(e.target))
-    );
-    if (res.status === 200) {
-      window.location = "/";
-    }
-  };
-
-  return (
-    <form onSubmit={submitHandler}>
-      <div className="form-group">
-        <label htmlFor="exampleInputEmail1">
-          Имя пользователя
-          <input
-            name="username"
-            type="text"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Введите имя"
-          />
-        </label>
-      </div>
-      <div className="form-group">
-        <label htmlFor="exampleInputEmail1">
-          Адрес электронной почты
-          <input
-            name="email"
-            type="email"
-            className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Введите адрес"
-          />
-        </label>
-      </div>
-      <div className="form-group">
-        <label htmlFor="exampleInputPassword1">
-          Пароль
-          <input
-            name="password"
-            type="password"
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Введите пароль"
-          />
-        </label>
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Зарегестрироваться
-      </button>
-    </form>
-=======
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -72,7 +11,7 @@ export default function SignUp() {
     if (!(password && name)) {
       return setError({ message: 'Password and username must be non-empty' });
     }
-    axios.post('/api/auth/signup', formData)
+    axios.post('/user/signup', formData)
       .then(() => { window.location = '/'; })
       .catch((error) => {
         console.log(error);
@@ -148,6 +87,5 @@ export default function SignUp() {
         </div>
       </div>
     </div> */
->>>>>>> origin/main
   );
 }

@@ -1,24 +1,31 @@
-import express from "express";
-import bcrypt from "bcrypt";
-import { User } from "../../db/models";
+import express from 'express';
+import bcrypt from 'bcrypt';
+import { User } from '../../db/models';
 
 const router = express.Router();
 
-router.post("/signup", async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!(username && email && password)) return res.sendStatus(400);
+router.get('/signup', (req, res) => {
+  res.render('Layout');
+});
+router.get('/signin', (req, res) => {
+  res.render('Layout');
+});
+
+router.post('/signup', async (req, res) => {
+  const { name, email, password } = req.body;
+  if (!(name && email && password)) return res.sendStatus(400);
 
   try {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {
-        userName: username,
+        name,
         password: await bcrypt.hash(password, 7),
       },
     });
     if (!created) return res.sendStatus(403);
 
-    req.session.user = { id: user.id, username: user.userName };
+    req.session.user = { id: user.id, name: user.name };
 
     return res.sendStatus(200);
   } catch (err) {
@@ -26,7 +33,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/signin", async (req, res) => {
+router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   if (!(email && password)) return res.sendStatus(400);
 
@@ -34,7 +41,7 @@ router.post("/signin", async (req, res) => {
     const user = await User.findOne({ where: { email } });
 
     if (await bcrypt.compare(password, user.password)) {
-      req.session.user = { id: user.id, username: user.userName };
+      req.session.user = { id: user.id, name: user.name };
 
       return res.sendStatus(200);
     }
@@ -45,9 +52,9 @@ router.post("/signin", async (req, res) => {
   }
 });
 
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.destroy();
-  res.clearCookie("user_sid").sendStatus(200);
+  res.clearCookie('user_sid').sendStatus(200);
 });
 
 export default router;

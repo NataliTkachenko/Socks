@@ -1,0 +1,41 @@
+.pattern {
+  width: 240px;
+  position: absolute;
+}
+
+.pic {
+  width: 75px;
+  position: absolute;
+  padding-top: 50px;
+  padding-left: 115px;
+}
+
+.color {
+  width: 240px;
+  height: 240px;
+}
+
+
+.logo {
+  width: 80px;
+}
+
+.patternMini {
+  display: block;
+  width: 60px;
+}
+
+.picMini {
+  display: block;
+  width: 60px;
+}
+
+.colorMini {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.options {
+  display: inline-block;
+}

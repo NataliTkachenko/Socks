@@ -9,6 +9,7 @@ export default function Layout({ initState }) {
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/style.css" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -17,7 +18,7 @@ export default function Layout({ initState }) {
         />
         <script defer src="/js/app.js" />
         <script defer src="/js/vendor.js" />
-        
+
         <title>Document</title>
       </head>
       <body>

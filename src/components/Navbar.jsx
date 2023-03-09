@@ -8,7 +8,7 @@ export default function Navbar() {
     padding: '10px',
     borderRadius: '5px',
     border: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
   };
 
   return (
@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className="container-fluid">
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-             <img alt="Brand" src="/Img/logo.png"></img>
+            <img className="logo" alt="Brand" src="/Img/logo.png" />
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">Главная</a>
             </li>
@@ -29,10 +29,13 @@ export default function Navbar() {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-             <a href="/user/signup"><button className="nav-link btn" style={btnStyles} >Зарегистрироваться</button></a>
+              <a href="/user/signup"><button className="nav-link btn" style={btnStyles}>Зарегистрироваться</button></a>
             </li>
             <li className="nav-item">
-              <a href="/user/signin"> <button className="nav-link btn" style={btnStyles} >Войти</button></a>
+              <a href="/user/signin">
+                {' '}
+                <button className="nav-link btn" style={btnStyles}>Войти</button>
+              </a>
             </li>
           </ul>
         </div>

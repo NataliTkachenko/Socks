@@ -1,101 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Card, Button, Form } from 'react-bootstrap';
 
-export default function CartPage() {
-    const Cart = () => {
-	const [cart, setCart] = useState(data);
-	const [total, setTotal] = useState({
-			price: cart.reduce((prev, curr)=> prev + curr.priceTotal, 0),
-			count: cart.reduce((prev, curr)=> prev + curr.count, 0)
-	})
+ export default function CartPage() {
+  const [cartItems, setCartItems] = useState([]);
 
-	useEffect(() => {
-		setTotal({
-			price: cart.reduce((prev, curr) => prev + curr.priceTotal, 0),
-			count: cart.reduce((prev, curr) => prev + curr.count , 0),
-		});
-	}, [cart])
+  function addToCart(item) {
+    setCartItems([...cartItems, item]);
+  }
 
-	const deleteProduct = (id) => {
-		setCart((cart) => cart.filter((product)=> id !== product.id));
-	}
+  function removeFromCart(itemId) {
+    setCartItems(cartItems.filter(item => item.id !== itemId));
+  }
 
-	const increase = (id) => {
-		setCart((cart) => {
-			return cart.map((product) => {
-				if (product.id === id) {
-					return {
-						...product,
-						count: product.count + 1,
-						priceTotal: (product.count + 1) * product.price,
-					};
-				}
-				return product
-			})
-		})
-	}
+  function updateQuantity(itemId, newQuantity) {
+    const updatedCart = cartItems.map(item => {
+      if (item.id === itemId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setCartItems(updatedCart);
+  }
 
-	const decrease = (id) => {
-		setCart((cart) => {
-			return cart.map((product) => {
-				if (product.id === id) {
-
-					const newCount = product.count - 1 > 1 ? product.count - 1 : 1;
-
-					return {
-						...product,
-						count: newCount,
-						priceTotal: newCount * product.price,
-					};
-				}
-				return product
-			})
-		})
-	}
-
-	const changeValue = (id, value) => {
-		setCart((cart) => {
-			return cart.map((product) => {
-				if (product.id === id) {
-					return {
-						...product,
-						count: value,
-						priceTotal: value * product.price
-					}
-				}
-				return product
-			})
-		})
-	}
-
-	const products = cart.map((product) => {
-		return (
-			<Product
-				product={product}
-				key={product.id}
-				deleteProduct={deleteProduct}
-				increase={increase}
-				decrease={decrease}
-				changeValue={changeValue}
-			/>
-		);
-	})
-}
+  function renderCartItem(item) {
     return (
-		<section className='cart'>
-				<header className='cart-header'>
-			<div className='cart-header__title'>наименование</div>
-			<div className='cart-header__count'>количество</div>
-			<div className='cart-header__cost'>стоимость</div>
-		</header>
-			{products}
-				<footer className='cart-footer'>
-			<div className='cart-footer__count'>{count} ед.</div>
-			<div className='cart-footer__price'>
-				{formatPrice(price)} руб.
-			</div>
-		</footer> 
-        {/* total={total} /> */}
-		</section>
-	);
-  
-}
+      <Card key={item.id}>
+        <Card.Img variant="top" src={item.image} />
+        <Card.Body>
+          <Card.Title>{item.name}</Card.Title>
+          <Card.Text>{item.price}</Card.Text>
+          <Form>
+            <Form.Group controlId={`quantity_${item.id}`}>
+              <Form.Label>Quantity:</Form.Label>
+              <div className="d-flex align-items-center">
+                <Button variant="outline-primary" onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</Button>
+                <Form.Control type="number" value={item.quantity} onChange={e => updateQuantity(item.id, e.target.value)} />
+                <Button variant="outline-primary" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</Button>
+              </div>
+            </Form.Group>
+          </Form>
+          <Button variant="danger" onClick={() => removeFromCart(item.id)}>Remove</Button>
+        </Card.Body>
+      </Card>
+    );
+  }
+
+return (
+    <div>
+      <h1>Cart</h1>
+      {cartItems.length > 0 ? (
+        <div>
+          {cartItems.map(renderCartItem)}
+          <Button variant="success" className="mt-3">Checkout</Button>
+          <Button variant="warning" className="mt-3 ml-3" onClick={() => setCartItems([])}>Clear Cart</Button>
+        </div>
+      ) : (
+        <p>Your cart is empty.</p>
+      )}
+    </div>
+  )
+	  }

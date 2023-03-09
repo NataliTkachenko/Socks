@@ -32,12 +32,12 @@ export default function Sockscreate() {
   };
 
   const colorCards = [
-    { id: 1, value: 'Red', image: '#FFFFFF' },
-    { id: 2, value: 'Blue', image: '#FFFF00' },
-    { id: 3, value: 'Green', image: '#800080' },
-    { id: 4, value: 'Yellow', image: '#FF1493' },
-    { id: 5, value: 'Orange', image: '#00FF7F' },
-    { id: 6, value: 'Purple', image: '#00FFFF' },
+    { id: 1, value: 'White', image: '#FFFFFF' },
+    { id: 2, value: 'Yellow', image: '#FFFF00' },
+    { id: 3, value: 'Purple', image: '#800080' },
+    { id: 4, value: 'Pink', image: '#FF1493' },
+    { id: 5, value: 'Green', image: '#00FF7F' },
+    { id: 6, value: 'Blue', image: '#00FFFF' },
   ];
 
   const patternCards = [
@@ -61,20 +61,16 @@ export default function Sockscreate() {
       onClick={handleColorClick}
       data-value={card.image}
       style={{ backgroundColor: `${card.image}` }}
-    >
-      <p>{card.value}</p>
-    </div>
+    />
   ));
 
   const renderPatternCards = () => patternCards.map((card) => (
     <div
-      className="inOptions"
       key={card.id}
       onClick={handlePatternClick}
       data-value={card.image}
     >
       <img className="patternMini" src={card.image} alt={card.value} />
-      <p>{card.value}</p>
     </div>
   ));
 
@@ -85,33 +81,34 @@ export default function Sockscreate() {
       data-value={card.image}
     >
       <img className="picMini" src={card.image} alt={card.value} />
-      <p>{card.value}</p>
     </div>
   ));
 
   return (
-    <div>
-      <h1>Твой дизайн:</h1>
-      <div style={{ position: 'relative' }}>
-        <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
-        <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
-        <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
-        <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
-      </div>
+    <>
       <div>
-        <h2>Color</h2>
+        <h1>Твой дизайн:</h1>
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
+          <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
+          <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
+          <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
+        </div>
+      </div>
+      <div className="afterConstructor">
+        <h2>Выбери цвет</h2>
         <div className="options">{renderColorCards()}</div>
       </div>
       <div>
-        <h2>Pattern</h2>
+        <h2>Выбери узор</h2>
         <div className="options">{renderPatternCards()}</div>
       </div>
       <div>
-        <h2>Image</h2>
-        <div>{renderImageCards()}</div>
+        <h2>Выбери </h2>
+        <div className="options">{renderImageCards()}</div>
       </div>
-      <button onClick={handleAddToFavorites}>Add to Favorites</button>
-      <button onClick={handleAddToBasket}>Add to Basket</button>
-    </div>
+      <button onClick={handleAddToFavorites}>В избранное</button>
+      <button onClick={handleAddToBasket}>В корзину</button>
+    </>
   );
 }

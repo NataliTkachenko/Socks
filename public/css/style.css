@@ -21,21 +21,35 @@
 }
 
 .patternMini {
-  display: block;
+  padding: 5px;
   width: 60px;
 }
 
 .picMini {
-  display: block;
-  width: 60px;
+  padding: 5px;
+  height: 60px;
 }
 
 .colorMini {
-  display: block;
+  margin: 5px;
   width: 60px;
   height: 60px;
 }
 
 .options {
-  display: inline-block;
+  background-color: rgb(248, 248, 248);
+  display: inline-flex;
 }
+
+.afterConstructor {
+  margin-top: 300px;
+}
+
+button {
+  margin: 10px;
+}
+
+body {
+  margin-left: 10vh;
+}
+

@@ -24,6 +24,7 @@ export default function Favorites() {
           <div style={{ position: 'relative' }}>
             <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
             <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
+             <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
             <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
           </div>
           <Card.Body>

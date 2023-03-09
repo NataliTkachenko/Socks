@@ -8,7 +8,7 @@ import Main from './Main';
 import Cart from './Cart/Cart';
 import Sockscreate from './Sockscreate';
 import Share from './Share';
-import CartPage from './Cart/CartPage';
+
 
 export default function App(user) {
   const [currentUser, setCurrentUser] = useState(user.user || null);
@@ -24,7 +24,7 @@ export default function App(user) {
         <Route path="/user/signin" element={<SignInPage />} />
            <Route path="/sockscreate" element={<Sockscreate />} />
             <Route path="/share" element={<Share />} />
-            < Route path = "/cartpage"  element = {<CartPage/>} />
+        
 
       </Routes>
 

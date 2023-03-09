@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 
+
 export default function Navbar({ currentUser, setCurrentUser }) {
   const btnStyles = {
     backgroundColor: 'turquoise',
@@ -22,7 +23,7 @@ export default function Navbar({ currentUser, setCurrentUser }) {
     <nav className="navbar navbar-expand-lg navbar-light bg-beige">
       <div className="container-fluid">
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="nav navbar-nav">
              <img alt="Brand" src="/Img/logo.png"></img>
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">Главная</a>
@@ -58,7 +59,7 @@ export default function Navbar({ currentUser, setCurrentUser }) {
                 <li className="nav-item">
                   <a href="/user/signin">
                     {' '}
-                    <button className="nav-link btn" style={btnStyles}>Войти</button>
+                    <button className="nav-link btn" style={btnStyles}>Войти</button> 
                   </a>
                 </li>
               </>

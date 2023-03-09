@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Cart from './Cart';
+
 import Navbar from './Navbar';
 import Favourites from './Favourites';
 import SignInPage from './Auth/SingInPage';
 import SignUpPage from './Auth/SingUpPage';
 import Main from './Main';
-import Cart from '../components/Cart1/Cart'
+import Cart from './Cart/Cart'
 
 export default function App() {
   return (

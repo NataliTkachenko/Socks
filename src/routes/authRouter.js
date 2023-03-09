@@ -12,20 +12,20 @@ router.get('/signin', (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!(username && email && password)) return res.sendStatus(400);
+  const { name, email, password } = req.body;
+  if (!(name && email && password)) return res.sendStatus(400);
 
   try {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: {
-        userName: username,
+        name,
         password: await bcrypt.hash(password, 7),
       },
     });
     if (!created) return res.sendStatus(403);
 
-    req.session.user = { id: user.id, username: user.userName };
+    req.session.user = { id: user.id, name: user.name };
 
     return res.sendStatus(200);
   } catch (err) {
@@ -41,7 +41,7 @@ router.post('/signin', async (req, res) => {
     const user = await User.findOne({ where: { email } });
 
     if (await bcrypt.compare(password, user.password)) {
-      req.session.user = { id: user.id, username: user.userName };
+      req.session.user = { id: user.id, name: user.name };
 
       return res.sendStatus(200);
     }

@@ -7,7 +7,7 @@ export default function SignIn() {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
 
-    axios.post('/api/auth/signin', data)
+    axios.post('/user/signin', data)
       .then(() => {
         window.location = '/';
       });

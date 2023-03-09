@@ -11,7 +11,7 @@ export default function SignUp() {
     if (!(password && name)) {
       return setError({ message: 'Password and username must be non-empty' });
     }
-    axios.post('/api/auth/signup', formData)
+    axios.post('/user/signup', formData)
       .then(() => { window.location = '/'; })
       .catch((error) => {
         console.log(error);

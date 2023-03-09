@@ -1,16 +1,31 @@
 import axios from 'axios';
 import React from 'react';
 
-
 export default function Navbar({ currentUser, setCurrentUser }) {
   const btnStyles = {
     backgroundColor: 'turquoise',
-    color: 'white',
+    color: 'black',
     padding: '10px',
     borderRadius: '5px',
     border: 'none',
     cursor: 'pointer',
+    marginRight: '20px',
   };
+
+  const navBarStyles = {
+    backgroundColor: '#FFEFD5',
+
+  };
+
+  const navItems = {
+    fontSize: '25px',
+  };
+
+  const glav = {
+    marginTop: '10px',
+    marginLeft: '30px',
+  };
+
   const clickHandler = async () => {
     const res = await axios('/user/logout');
     if (res.status === 200) {
@@ -20,19 +35,19 @@ export default function Navbar({ currentUser, setCurrentUser }) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-beige">
+    <nav className="navbar navbar-expand-lg navbar-light bg-beige" style={navBarStyles}>
       <div className="container-fluid">
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <img className="logo" alt="Brand" src="/Img/logo.png" />
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={navItems}>
+            <a href="/"><img className="logo" alt="Brand" src="/Img/logo.png" /></a>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Главная</a>
+              <a className="nav-link active" aria-current="page" href="/" style={glav}>Главная</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/favourites">Избранное</a>
+              <a className="nav-link active" aria-current="page" href="/favourites" style={glav}>Избранное</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/cart">Корзина</a>
+              <a className="nav-link" href="/cart" style={glav}>Корзина</a>
             </li>
           </ul>
           <ul className="navbar-nav">
@@ -59,7 +74,7 @@ export default function Navbar({ currentUser, setCurrentUser }) {
                 <li className="nav-item">
                   <a href="/user/signin">
                     {' '}
-                    <button className="nav-link btn" style={btnStyles}>Войти</button> 
+                    <button className="nav-link btn" style={btnStyles}>Войти</button>
                   </a>
                 </li>
               </>

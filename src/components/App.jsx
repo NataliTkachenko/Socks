@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
 import Navbar from './Navbar';
 import Favourites from './Favourites';
 import SignInPage from './Auth/SingInPage';
 import SignUpPage from './Auth/SingUpPage';
 import Main from './Main';
 import Cart from './Cart/Cart';
+import Sockscreate from './Sockscreate';
+import Share from './Share';
+import CartPage from './Cart/CartPage';
 
 export default function App(user) {
   const [currentUser, setCurrentUser] = useState(user.user || null);
   console.log(user.user);
-import Cart from './Cart/Cart';
-import Sockscreate from './Sockscreate';
-import Share from './Share';
-import CartPage from './Cart/CartPage';
-export default function App() {
   return (
     <div className="container">
       <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -34,3 +31,4 @@ export default function App() {
     </div>
   );
 }
+

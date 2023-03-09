@@ -32,7 +32,7 @@ export default function Favorites() {
                 <Card.Title>Носки</Card.Title>
                 <Card.Text>990 рублей</Card.Text>
                 <Button variant="primary">Добавить в корзину</Button>
-                <Button variant="primary" onClick={handleShow}>Поделиться</Button>
+                <Button variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Поделиться</Button>
               </Card.Body>
             </div>
           </Card>

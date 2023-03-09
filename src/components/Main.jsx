@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Button, Form } from 'react-bootstrap';
 import Footer from './Footer';
 
 export default function Main() {
@@ -12,8 +13,6 @@ export default function Main() {
   };
 
   const btnStyles = {
-    backgroundColor: 'turquoise',
-    color: 'black',
     padding: '10px',
     borderRadius: '5px',
     border: 'none',
@@ -45,7 +44,7 @@ export default function Main() {
     <>
       <div style={styles}>
         <h1>Самое время быть уникальным!</h1>
-        <a href="/sockscreate"><button style={btnStyles} type="submit">Смоделируй свою любимую пару носков!</button></a>
+        <a href="/sockscreate"><Button variant="primary" style={btnStyles} type="submit">Смоделируй свою любимую пару носков!</Button></a>
         <div style={socksCont}>
           <div>
             <img src="./Img/socks/s1.png" style={oneSock} alt="sock1" />

@@ -16,7 +16,6 @@
   height: 240px;
 }
 
-
 .logo {
   width: 80px;
 }
@@ -46,6 +45,10 @@
   margin-top: 300px;
 }
 
+.inFavorite {
+  margin-top: 240px;
+}
+
 button {
   margin: 10px;
 }
@@ -53,4 +56,3 @@ button {
 body {
   margin-left: 10vh;
 }
-

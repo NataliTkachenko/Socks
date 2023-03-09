@@ -8,7 +8,7 @@ export default function Favorites() {
   const handleShow = () => setShow(true);
   const [socks, setSocks] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     const sockData = localStorage.getItem('fav');
     if (sockData) {
       setSocks(JSON.parse(sockData));
@@ -17,25 +17,27 @@ export default function Favorites() {
 
   return (
     <>
-    <div>
-      {socks.map((sock) => (
-        <Card key={sock.color}>
-          <Card.Img variant="top" />
-          <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
-            <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
-             <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
-            <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
-          </div>
-          <Card.Body>
-            <Card.Title>Носки</Card.Title>
-            <Card.Text>990 рублей</Card.Text>
-            <Button variant="primary">Добавить в корзину</Button>
-            <Button variant="primary" onClick={handleShow}>Поделиться</Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
+      <div>
+        {socks.map((sock) => (
+          <Card key={sock.color}>
+            <Card.Img variant="top" />
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
+              <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
+              <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
+              <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
+            </div>
+            <div className="inFavorite">
+              <Card.Body>
+                <Card.Title>Носки</Card.Title>
+                <Card.Text>990 рублей</Card.Text>
+                <Button variant="primary">Добавить в корзину</Button>
+                <Button variant="primary" onClick={handleShow}>Поделиться</Button>
+              </Card.Body>
+            </div>
+          </Card>
+        ))}
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

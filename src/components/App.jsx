@@ -6,7 +6,8 @@ import Favourites from './Favourites';
 import SignInPage from './Auth/SingInPage';
 import SignUpPage from './Auth/SingUpPage';
 import Main from './Main';
-import Cart from './Cart/Cart'
+import Cart from './Cart/Cart';
+import Sockscreate from './Sockscreate';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/user/signup" element={<SignUpPage />} />
         <Route path="/user/signin" element={<SignInPage />} />
+           <Route path="/sockscreate" element={<Sockscreate />} />
       </Routes>
 
     </div>

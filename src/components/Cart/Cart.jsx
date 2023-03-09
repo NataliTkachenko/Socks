@@ -1,5 +1,6 @@
 import React from 'react'
 import CartPage from "./CartPage"
+import { Route, Routes } from 'react-router-dom'
 
 export default function Cart() {
   return (
@@ -11,7 +12,10 @@ export default function Cart() {
 			</header>
 			<div className="section-cart__body">
 				<div className="container">
-					< CartPage/>
+					<Routes>
+						< Route path = "/cartpage"  element = {<CartPage/>} />
+						</Routes>
+					
 				</div>
 			</div>
     </section>

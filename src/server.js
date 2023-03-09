@@ -58,4 +58,9 @@ app.get('/sockscreate', (req, res) => {
 
 // app.use('/api/auth', authRouter);
 
+
+app.get('/cartpage', (req, res) => {
+  res.render('Layout', {});
+});
+
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

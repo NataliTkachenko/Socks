@@ -8,7 +8,7 @@ import { Card} from "react-bootstrap";
     <div className="container mt-5">
     
       <Card>
-        <Card.Img variant="top" src="https://via.placeholder.com/350x150" /> //image socks  =  localStorage.getItem
+        <Card.Img variant="top" /> //image socks  =  localStorage.getItem
         <Card.Body>
           <Card.Title>Носки</Card.Title>
           <Card.Text>990 рублей</Card.Text>

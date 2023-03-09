@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 export default function Sockscreate() {
+  let counter = 0;
   // const [color, setColor] = useState('#FFFFFF');
   // const [pattern, setPattern] = useState('');
   // const [image, setImage] = useState('');
@@ -24,15 +25,20 @@ export default function Sockscreate() {
   };
 
   const handleAddToFavorites = () => {
-    localStorage.setItem('favourites', `${JSON.stringify(sock)}`);
-    // localStorage.setItem('color', `${sock.color}`);
-    // localStorage.setItem('pattern', `${sock.pattern}`);
-    // localStorage.setItem('image',`${sock.image}`);
-    window.location = '/favourites'
+  const existingCart = localStorage.getItem('fav');
+  const newCart = existingCart ? JSON.parse(existingCart) : [];
+  newCart.push(sock);
+  localStorage.setItem('fav', JSON.stringify(newCart));
+  window.location = '/favourites';
+
   };
 
   const handleAddToBasket = () => {
-    // Add code here to add the product to basket
+  const existingCart = localStorage.getItem('cart');
+  const newCart = existingCart ? JSON.parse(existingCart) : [];
+  newCart.push(sock);
+  localStorage.setItem('cart', JSON.stringify(newCart));
+  window.location = '/cart';
   };
 
   const colorCards = [

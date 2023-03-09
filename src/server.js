@@ -5,6 +5,7 @@ import session from 'express-session';
 import store from 'session-file-store';
 import jsxRender from './utils/jsxRender';
 import authRouter from './routes/authRouter';
+import { authMiddleware } from './middlewares';
 
 const PORT = 3000;
 const app = express();
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
 });
+app.use(authMiddleware);
 
 app.get('/', (req, res) => {
   res.render('Layout', {});
@@ -47,6 +49,12 @@ app.use('/user/', authRouter);
 app.get('/cart', (req, res) => {
   res.render('Layout', {});
 });
+
+// app.post('/cart', (req, res) => {
+//   //  const data  = req.body;
+//   //  console.log(data)
+//    res.send('/cart', {})
+// });
 
 app.get('/favourites', (req, res) => {
   res.render('Layout', {});
@@ -59,8 +67,12 @@ app.get('/sockscreate', (req, res) => {
 // app.use('/api/auth', authRouter);
 
 
-app.get('/cartpage', (req, res) => {
+
+
+app.get('/share', (req, res) => {
   res.render('Layout', {});
 });
+
+
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

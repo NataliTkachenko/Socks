@@ -5,6 +5,7 @@ import session from 'express-session';
 import store from 'session-file-store';
 import jsxRender from './utils/jsxRender';
 import authRouter from './routes/authRouter';
+import { authMiddleware } from './middlewares';
 
 const PORT = 3000;
 const app = express();
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
 });
+app.use(authMiddleware);
 
 app.get('/', (req, res) => {
   res.render('Layout', {});

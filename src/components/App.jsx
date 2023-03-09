@@ -23,7 +23,7 @@ export default function App(user) {
         <Route path="/user/signin" element={<SignInPage />} />
         <Route path="/sockscreate" element={<Sockscreate />} />
         <Route path="/share" element={<Share />} />
-        <Route path="/cartpage" element={<CartPage />} />
+        
 
       </Routes>
 

@@ -6,15 +6,26 @@ export default function Favorites() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // console.log(localStorage)
+  const sock = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('favourites'))
+  
+   
 
   return (
     <>
       <div className="container mt-5">
         <Card>
-          <Card.Img variant="top" src="https://via.placeholder.com/350x150" />
+          <Card.Img variant="top" />
+         <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
+        <img style={{ position: 'absolute' }} className="pattern" src={`${sock.pattern}`} alt="" />
+        <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
+        <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
+      </div> 
+    
           <Card.Body>
-            <Card.Title>Product Name</Card.Title>
-            <Card.Text>Description of the product.</Card.Text>
+            <Card.Title>Носки</Card.Title>
+            <Card.Text>990 рублей</Card.Text>
             <Button variant="primary">Добавить в корзину</Button>
             <Button variant="primary" onClick={handleShow}>Поделиться</Button>
           </Card.Body>

@@ -4,7 +4,7 @@ export default function Sockscreate() {
   // const [color, setColor] = useState('#FFFFFF');
   // const [pattern, setPattern] = useState('');
   // const [image, setImage] = useState('');
-  const [sock, setSock] = useState({ id:'',color: '#FFFFFF', pattern: '', image: '' });
+  const [sock, setSock] = useState({color: '#FFFFFF', pattern: '', image: '' });
 
   const handleColorClick = (event) => {
     setSock((prev) => ({ ...prev, color: event.target.dataset.value }));
@@ -24,10 +24,10 @@ export default function Sockscreate() {
   };
 
   const handleAddToFavorites = () => {
-    localStorage.setItem('id', `${JSON.stringify(sock)}`);
-    localStorage.setItem('color', `${sock.color}`);
-    localStorage.setItem('pattern', `${sock.pattern}`);
-    localStorage.setItem('image',`${sock.image}`);
+    localStorage.setItem('favourites', `${JSON.stringify(sock)}`);
+    // localStorage.setItem('color', `${sock.color}`);
+    // localStorage.setItem('pattern', `${sock.pattern}`);
+    // localStorage.setItem('image',`${sock.image}`);
     window.location = '/favourites'
   };
 

@@ -12,7 +12,6 @@ import Share from './Share';
 
 export default function App(user) {
   const [currentUser, setCurrentUser] = useState(user.user || null);
-  console.log(user.user);
   return (
     <div className="container">
       <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -22,12 +21,12 @@ export default function App(user) {
         <Route path="/cart" element={<Cart  />} />
         <Route path="/user/signup" element={<SignUpPage />} />
         <Route path="/user/signin" element={<SignInPage />} />
-           <Route path="/sockscreate" element={<Sockscreate />} />
-            <Route path="/share" element={<Share />} />
-      
+        <Route path="/sockscreate" element={<Sockscreate />} />
+        <Route path="/share" element={<Share />} />
+        <Route path="/cartpage" element={<CartPage />} />
+
       </Routes>
 
     </div>
   );
 }
-

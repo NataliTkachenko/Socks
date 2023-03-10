@@ -21,13 +21,13 @@ export default function Favorites() {
     const handleDeleteSock = (color) => {
     const updatedSocks = socks.filter(sock => sock.color !== color);
     setSocks(updatedSocks);
-    localStorage.setItem('fav', JSON.stringify(updatedSocks));
+    // localStorage.setItem('fav', JSON.stringify(updatedSocks));
   }
     const handleAddToBasket = () => {
-  const existingCart = localStorage.getItem('fav');
-  const newCart = existingCart ? JSON.parse(existingCart) : [];
-  newCart.push(sock);
-  localStorage.setItem('fav', JSON.stringify(newCart));
+  // const existingCart = localStorage.getItem('fav');
+  // const newCart = existingCart ? JSON.parse(existingCart) : [];
+  // newCart.push(sock);
+  // localStorage.setItem('fav', JSON.stringify(newCart));
   window.location = '/cart';
   };
   return (
@@ -47,8 +47,9 @@ export default function Favorites() {
                 <Card.Body>
                   <Card.Title>Носки</Card.Title>
                   <Card.Text>990 рублей</Card.Text>
-                  <Button className="m-2" variant="primary">Добавить в корзину</Button>
+                  <Button className="m-2" variant="primary" onClick={handleAddToBasket}>Добавить в корзину</Button>
                   <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Поделиться</Button>
+                  <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleDeleteSock}>Удалить из избранного</Button>
                 </Card.Body>
               </div>
             </Card>

@@ -25,4 +25,3 @@ async function main() {
   console.log(`Message sent: ${info.messageId}`);
 }
 
-.catch(e => console.log(e));

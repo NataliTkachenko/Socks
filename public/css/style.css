@@ -41,6 +41,18 @@
   display: inline-flex;
 }
 
+.sockHov {
+  width: 550px;
+  height: 450px;
+  padding-left: 5px;
+  padding-top: 5px;
+  transition: 1s;
+}
+
+.sockHov:hover {
+  transform: scale(1.2);
+}
+
 .afterConstructor {
   margin-top: 300px;
 }

@@ -1,5 +1,4 @@
 import express from 'express';
-import morgan from 'morgan';
 import path from 'path';
 import session from 'express-session';
 import store from 'session-file-store';
@@ -10,16 +9,15 @@ import { authMiddleware } from './middlewares';
 const nodemailer = require('nodemailer');
  const {User} = require('../db/models');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const FileStore = store(session);
 
-app.engine('jsx', jsxRender);
-app.set('view engine', 'jsx');
+app.engine('js', jsxRender);
+app.set('view engine', 'js');
 app.set('views', path.join(__dirname, 'components'));
 
 app.use(express.static('public'));
-app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { v1 as uuidv1 } from 'uuid';
 
 export default function Sockscreate() {
   const [sock, setSock] = useState({ color: '#FFFFFF', pattern: '', image: '' });
@@ -19,7 +20,8 @@ export default function Sockscreate() {
   const handleAddToFavorites = () => {
     const existingCart = localStorage.getItem('fav');
     const newCart = existingCart ? JSON.parse(existingCart) : [];
-    newCart.push(sock);
+    const id = uuidv1();
+    newCart.push({ id, ...sock });
     localStorage.setItem('fav', JSON.stringify(newCart));
     window.location = '/favourites';
   };
@@ -27,7 +29,8 @@ export default function Sockscreate() {
   const handleAddToBasket = () => {
     const existingCart = localStorage.getItem('cart');
     const newCart = existingCart ? JSON.parse(existingCart) : [];
-    newCart.push(sock);
+    const id = uuidv1();
+    newCart.push({ id, ...sock });
     localStorage.setItem('cart', JSON.stringify(newCart));
     window.location = '/cart';
   };

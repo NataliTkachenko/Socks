@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import btnStyles, {
+import {
   Card, Button, Modal, Row, Container, Col,
 } from 'react-bootstrap';
 
@@ -10,6 +10,25 @@ export default function Favorites() {
   const handleShow = () => setShow(true);
   const [socks, setSocks] = useState([]);
 
+  const styles = {
+    backgroundColor: 'white',
+    padding: '20px',
+    textAlign: 'center',
+    marginTop: '100',
+  };
+
+  const btnStyles = {
+    padding: '10px',
+    borderRadius: '5px',
+    border: 'none',
+    cursor: 'pointer',
+    width: '500px',
+    height: '100px',
+    marginTop: '50px',
+    fontSize: '23px',
+
+  };
+
   useEffect(() => {
     const sockData = localStorage.getItem('fav');
     if (sockData) {
@@ -17,24 +36,37 @@ export default function Favorites() {
     }
   }, []);
 
-  const handleDeleteSock = (color) => {
-    const updatedSocks = socks.filter((sock) => sock.color !== color);
+  const handleDeleteSock = (id) => {
+    const updatedSocks = socks.filter((sock) => sock.id !== id);
     setSocks(updatedSocks);
-    // localStorage.setItem('fav', JSON.stringify(updatedSocks));
+    localStorage.setItem('fav', JSON.stringify(updatedSocks));
   };
   const handleAddToBasket = () => {
-  // const existingCart = localStorage.getItem('fav');
-  // const newCart = existingCart ? JSON.parse(existingCart) : [];
-  // newCart.push(sock);
-  // localStorage.setItem('fav', JSON.stringify(newCart));
+    const existingCart = localStorage.getItem('cart');
+    const newCart = existingCart ? JSON.parse(existingCart) : [];
+    newCart.push(socks);
+    localStorage.setItem('cart', JSON.stringify(newCart));
     window.location = '/cart';
   };
   return (
-    <>
+    <div>
+      <div style={styles}>
+        <h1>Избранные товары</h1>
+        {socks.length === 0
+      && (
+      <>
+        <br />
+        <h3><i>Здесь пока ничего нет</i></h3>
+        <a href="/sockscreate"><Button variant="primary" style={btnStyles} type="submit">Смоделируй свою любимую пару носков!</Button></a>
+        <br />
+        <h2 style={{ marginTop: '20px' }}>Самое время быть уникальным!</h2>
+      </>
+      )}
+      </div>
       <Container>
         <Row md={4} style={{ display: 'flex', justifyContent: 'flex-start' }}>
-          {socks.map((sock) => (
-            <Card key={sock.color} className="m-2">
+          {socks?.map((sock) => (
+            <Card key={sock.id} className="m-2">
               <Card.Img variant="top" />
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
@@ -48,7 +80,7 @@ export default function Favorites() {
                   <Card.Text>990 рублей</Card.Text>
                   <Button className="m-2" variant="primary" onClick={handleAddToBasket}>Добавить в корзину</Button>
                   <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Поделиться</Button>
-                  <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleDeleteSock}>Удалить из избранного</Button>
+                  <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={() => handleDeleteSock(sock.id)}>Удалить из избранного</Button>
                 </Card.Body>
               </div>
             </Card>
@@ -59,11 +91,11 @@ export default function Favorites() {
         <Modal.Header closeButton>
           <Modal.Title>Поделиться</Modal.Title>
         </Modal.Header>
-        <div style={{ display: 'flex', marginLeft: '30px' }}>
-          <Modal.Body className="ml-5"><a href="https://mail.ru/" target="_blank" rel="noreferrer"><img src="./Img/icons/mail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
-          <Modal.Body><a href="https://www.google.com/intl/ru/gmail/about/" target="_blank" rel="noreferrer"><img src="./Img/icons/gmail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
-          <Modal.Body><a href="https://ok.ru/" target="_blank" rel="noreferrer"><img src="./Img/icons/odnoklass.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
-          <Modal.Body><a href="https://vk.com/" target="_blank" rel="noreferrer"><img src="./Img/icons/vk.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
+        <div style={{ display: 'flex' }}>
+          <Modal.Body><a href="https://mail.ru/" target="_blank" rel="noreferrer"><img src="/Img/icons/mail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
+          <Modal.Body><a href="https://www.google.com/intl/ru/gmail/about/" target="_blank" rel="noreferrer"><img src="/Img/icons/gmail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
+          <Modal.Body><a href="https://ok.ru/" target="_blank" rel="noreferrer"><img src="/Img/icons/odnoklass.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
+          <Modal.Body><a href="https://vk.com/" target="_blank" rel="noreferrer"><img src="/Img/icons/vk.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
         </div>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
@@ -71,6 +103,6 @@ export default function Favorites() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }

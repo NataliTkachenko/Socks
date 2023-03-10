@@ -1,3 +1,7 @@
+* {
+  box-sizing: unset;
+}
+
 .pattern {
   width: 240px;
   position: absolute;

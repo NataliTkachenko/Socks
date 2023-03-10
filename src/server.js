@@ -6,7 +6,9 @@ import store from 'session-file-store';
 import jsxRender from './utils/jsxRender';
 import authRouter from './routes/authRouter';
 import { authMiddleware } from './middlewares';
-   import nodeMailer  from 'nodemailer';
+
+const nodemailer = require('nodemailer');
+ const {User} = require('../db/models');
 
 const PORT = 3000;
 const app = express();
@@ -41,34 +43,37 @@ app.use((req, res, next) => {
 });
 app.use(authMiddleware);
 
-app.post('/send-email', function (req, res) {
-      let transporter = nodeMailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-          auth: {
-              user: 'xxx@xx.com',
-              pass: 'xxxx'
-          }
-      });
-      let mailOptions = {
-          from: '"Krunal Lathiya" <xx@gmail.com>', // sender address
-          to: req.body.to, // list of receivers
-          subject: req.body.subject, // Subject line
-          text: req.body.body, // plain text body
-          html: '<b>NodeJS Email Tutorial</b>' // html body
-      };
 
-      transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-              return console.log(error);
-          }
-          console.log('Message %s sent: %s', info.messageId, info.response);
-              res.render('index');
-          });
-      });
-     
+const router = express.Router();
+require('dotenv').config();
 
+  app.post('/sendreceipt', async (req, res) => {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'boberbobrovichelbrus@gmail.com',
+        pass: 'boberbobrovich11!'
+      },
+    });
+    const USER_ID = req.session.user.id
+    const use = await User.findOne({ where: { id: USER_ID } });
+      const mailOptions = {
+        from: ` "${use.name} ☕ 🥃 🍭" <${use.email}>`,
+        to: 'boberbobrovichelbrus@gmail.com',
+        subject: 'New Order 🎟',
+       
+      }
+      transporter.sendMail(mailOptions);
+      return res.json('All right');
+  
+  });
+
+
+
+
+
+
+    
 app.get('/', (req, res) => {
   res.render('Layout', {});
 });

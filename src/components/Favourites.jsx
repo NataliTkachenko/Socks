@@ -8,6 +8,7 @@ export default function Favorites() {
   const handleShow = () => setShow(true);
   const [socks, setSocks] = useState([]);
 
+
    useEffect(() => {
     const sockData = localStorage.getItem('fav');
     if (sockData) {
@@ -15,6 +16,18 @@ export default function Favorites() {
     }
   }, []);
 
+    const handleDeleteSock = (color) => {
+    const updatedSocks = socks.filter(sock => sock.color !== color);
+    setSocks(updatedSocks);
+    localStorage.setItem('fav', JSON.stringify(updatedSocks));
+  }
+    const handleAddToBasket = () => {
+  const existingCart = localStorage.getItem('fav');
+  const newCart = existingCart ? JSON.parse(existingCart) : [];
+  newCart.push(sock);
+  localStorage.setItem('fav', JSON.stringify(newCart));
+  window.location = '/cart';
+  };
   return (
     <>
     <div>
@@ -30,8 +43,9 @@ export default function Favorites() {
           <Card.Body>
             <Card.Title>Носки</Card.Title>
             <Card.Text>990 рублей</Card.Text>
-            <Button variant="primary">Добавить в корзину</Button>
+            <Button variant="primary" onClick={handleAddToBasket}>Добавить в корзину</Button>
             <Button variant="primary" onClick={handleShow}>Поделиться</Button>
+             <Button variant="danger" onClick={() => handleDeleteSock(sock.color)}>Удалить из избранного</Button>
           </Card.Body>
         </Card>
       ))}

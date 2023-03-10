@@ -60,7 +60,7 @@ export default function Cart() {
                     <Card.Title>Носки</Card.Title>
                     <Card.Text>990 рублей</Card.Text>
                     <div className="d-flex">
-                      <Form.Control type="number" min={1} max={10} defaultValue={sock.qty} onChange={(e) => handleQtyChange(sock.color, e)} />
+                      <Form.Control type="number" min={1} max={10} defaultValue={sock.qty||1} onChange={(e) => handleQtyChange(sock.color, e)} />
                       <Button variant="danger" onClick={() => handleDeleteSock(sock.color)}>Удалить</Button>
                     </div>
                   </Card.Body>

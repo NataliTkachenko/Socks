@@ -41,10 +41,11 @@ export default function Favorites() {
     setSocks(updatedSocks);
     localStorage.setItem('fav', JSON.stringify(updatedSocks));
   };
-  const handleAddToBasket = () => {
+  const handleAddToBasket = (id) => {
     const existingCart = localStorage.getItem('cart');
     const newCart = existingCart ? JSON.parse(existingCart) : [];
-    newCart.push(socks);
+    const [sock] = socks.filter((el) => el.id === id);
+    newCart.push(sock);
     localStorage.setItem('cart', JSON.stringify(newCart));
     window.location = '/cart';
   };
@@ -78,7 +79,7 @@ export default function Favorites() {
                 <Card.Body>
                   <Card.Title>Носки</Card.Title>
                   <Card.Text>990 рублей</Card.Text>
-                  <Button className="m-2" variant="primary" onClick={handleAddToBasket}>Добавить в корзину</Button>
+                  <Button className="m-2" variant="primary" onClick={() => handleAddToBasket(sock.id)}>Добавить в корзину</Button>
                   <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Поделиться</Button>
                   <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={() => handleDeleteSock(sock.id)}>Удалить из избранного</Button>
                 </Card.Body>

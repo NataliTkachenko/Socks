@@ -1,28 +1,22 @@
-import axios from 'axios';
+
 import React, { useState } from 'react';
 
 export default function Sockscreate() {
-  let counter = 0;
-  // const [color, setColor] = useState('#FFFFFF');
-  // const [pattern, setPattern] = useState('');
-  // const [image, setImage] = useState('');
   const [sock, setSock] = useState({ color: '#FFFFFF', pattern: '', image: '' });
 
   const handleColorClick = (event) => {
     setSock((prev) => ({ ...prev, color: event.target.dataset.value }));
-    // setColor(event.target.dataset.value);
-    // setSock(sock.color)
+ 
   };
 
   const handlePatternClick = (event) => {
     setSock((prev) => ({ ...prev, pattern: event.target.src }));
-    // setPattern(event.target.dataset.value);
-    // setSock(sock.pattern);
+ 
   };
 
   const handleImageClick = (event) => {
     setSock((prev) => ({ ...prev, image: event.target.src }));
-    // setImage(event.target.dataset.value);
+   
   };
 
   const handleAddToFavorites = () => {
@@ -115,11 +109,11 @@ export default function Sockscreate() {
         <div className="options">{renderPatternCards()}</div>
       </div>
       <div>
-        <h2>Выбери </h2>
+        <h2>Выбери изображение </h2>
         <div className="options">{renderImageCards()}</div>
       </div>
-      <button onClick={handleAddToFavorites}>В избранное</button>
-      <button onClick={handleAddToBasket}>В корзину</button>
+      <button onClick={handleAddToFavorites}>Добавить в  избранное</button>
+      <button onClick={handleAddToBasket}>Добавить в корзину</button>
     </>
   );
 }

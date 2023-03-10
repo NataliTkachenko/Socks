@@ -25,7 +25,7 @@ const sessionConfig = {
   secret: process.env.SESSION_SECRET ?? 'test',
   resave: true,
   store: new FileStore(),
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 12,
     httpOnly: true,
@@ -50,11 +50,6 @@ app.get('/cart', (req, res) => {
   res.render('Layout', {});
 });
 
-// app.post('/cart', (req, res) => {
-//   //  const data  = req.body;
-//   //  console.log(data)
-//    res.send('/cart', {})
-// });
 
 app.get('/favourites', (req, res) => {
   res.render('Layout', {});
@@ -64,7 +59,7 @@ app.get('/sockscreate', (req, res) => {
   res.render('Layout', {});
 });
 
-// app.use('/api/auth', authRouter);
+
 
 app.get('/share', (req, res) => {
   res.render('Layout', {});

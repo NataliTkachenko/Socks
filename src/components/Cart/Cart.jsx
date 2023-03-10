@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import btnStyles, {  Form, Card, Button, Modal, Row, Container, Col,} from 'react-bootstrap';
 import SignIn from '../Basket/SingInPage';
@@ -49,9 +50,7 @@ export default function Cart() {
  const signUP = () =>{
  window.location = '/user/signup';
  }
-//   const signIn = () =>{
-//  window.location = '/user/signin';
-//  }
+
 
   return (
     <> 
@@ -86,6 +85,7 @@ export default function Cart() {
       </Container>
              <div style={{ textAlign: 'center' }}>
   <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Оформить заказ</Button>
+
 </div>
 
      <Modal show={show} onHide={handleClose}>

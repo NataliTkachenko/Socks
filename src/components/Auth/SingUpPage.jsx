@@ -20,11 +20,11 @@ export default function SignUp() {
     axios.post('/user/signup', formData)
       .then((res) => {
         if (res.status === 200) window.location = '/';
-        if (res.status === 403) handleShow(true);
       })
       .catch((error) => {
         console.log(error);
         setError();
+        setShow(true);
       });
   };
   return (
@@ -59,16 +59,19 @@ export default function SignUp() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>ОШИБКА</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>Такой пользователь уже существует</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <a href="/user/signin">
+            <Button variant="primary" onClick={handleClose}>
+              Войти
+            </Button>
+
+          </a>
         </Modal.Footer>
       </Modal>
     </>

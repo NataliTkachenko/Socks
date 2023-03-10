@@ -6,7 +6,6 @@ export default function Main() {
   const styles = {
     backgroundColor: 'white',
     padding: '20px',
-    dipslay: 'flex',
     textAlign: 'center',
     marginTop: '100',
     minHeight: '100vh',
@@ -29,7 +28,7 @@ export default function Main() {
     display: 'flex',
     flexWrap: 'wrap',
     paddingRight: '10px',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   };
 
   // const oneSock = {

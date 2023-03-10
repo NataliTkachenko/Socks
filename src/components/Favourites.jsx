@@ -10,25 +10,24 @@ export default function Favorites() {
   const handleShow = () => setShow(true);
   const [socks, setSocks] = useState([]);
 
-
-   useEffect(() => {
+  useEffect(() => {
     const sockData = localStorage.getItem('fav');
     if (sockData) {
       setSocks(JSON.parse(sockData));
     }
   }, []);
 
-    const handleDeleteSock = (color) => {
-    const updatedSocks = socks.filter(sock => sock.color !== color);
+  const handleDeleteSock = (color) => {
+    const updatedSocks = socks.filter((sock) => sock.color !== color);
     setSocks(updatedSocks);
     // localStorage.setItem('fav', JSON.stringify(updatedSocks));
-  }
-    const handleAddToBasket = () => {
+  };
+  const handleAddToBasket = () => {
   // const existingCart = localStorage.getItem('fav');
   // const newCart = existingCart ? JSON.parse(existingCart) : [];
   // newCart.push(sock);
   // localStorage.setItem('fav', JSON.stringify(newCart));
-  window.location = '/cart';
+    window.location = '/cart';
   };
   return (
     <>
@@ -60,8 +59,8 @@ export default function Favorites() {
         <Modal.Header closeButton>
           <Modal.Title>Поделиться</Modal.Title>
         </Modal.Header>
-        <div style={{ display: 'flex' }}>
-          <Modal.Body><a href="https://mail.ru/" target="_blank" rel="noreferrer"><img src="./Img/icons/mail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
+        <div style={{ display: 'flex', marginLeft: '30px' }}>
+          <Modal.Body className="ml-5"><a href="https://mail.ru/" target="_blank" rel="noreferrer"><img src="./Img/icons/mail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
           <Modal.Body><a href="https://www.google.com/intl/ru/gmail/about/" target="_blank" rel="noreferrer"><img src="./Img/icons/gmail.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
           <Modal.Body><a href="https://ok.ru/" target="_blank" rel="noreferrer"><img src="./Img/icons/odnoklass.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>
           <Modal.Body><a href="https://vk.com/" target="_blank" rel="noreferrer"><img src="./Img/icons/vk.png" width="50px" height="50px" alt="mail" /></a></Modal.Body>

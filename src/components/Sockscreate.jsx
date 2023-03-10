@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
@@ -7,17 +6,14 @@ export default function Sockscreate() {
 
   const handleColorClick = (event) => {
     setSock((prev) => ({ ...prev, color: event.target.dataset.value }));
- 
   };
 
   const handlePatternClick = (event) => {
     setSock((prev) => ({ ...prev, pattern: event.target.src }));
- 
   };
 
   const handleImageClick = (event) => {
     setSock((prev) => ({ ...prev, image: event.target.src }));
-   
   };
 
   const handleAddToFavorites = () => {
@@ -91,7 +87,7 @@ export default function Sockscreate() {
 
   return (
     <div style={{
-      display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '50px',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px',
     }}
     >
       <div style={{ justifyContent: 'center' }}>
@@ -104,19 +100,21 @@ export default function Sockscreate() {
         </div>
       </div>
       <div className="afterConstructor">
-        <h2>Выбери цвет</h2>
+        <h2 className="config">Выбери цвет</h2>
         <div className="options">{renderColorCards()}</div>
       </div>
       <div>
-        <h2>Выбери узор</h2>
-        <div className="options">{renderPatternCards()}</div>
+        <h2 className="config">Выбери узор</h2>
+        <div className="options" style={{backgroundColor: 'unset'}}>{renderPatternCards()}</div>
       </div>
       <div>
-        <h2>Выбери изображение </h2>
-        <div className="options">{renderImageCards()}</div>
+        <h2 className="config">Выбери изображение </h2>
+        <div className="options" style={{backgroundColor: 'unset'}}>{renderImageCards()}</div>
       </div>
-      <Button className="m-1 " variant="primary" onClick={handleAddToFavorites}>В избранное</Button>
-      <Button className="m-1" variant="primary" onClick={handleAddToBasket}>В корзину</Button>
+      <div className="but" style={{ display: 'flex' }}>
+        <Button className="m-1" variant="primary" style={{ fontSize: '25px' }} onClick={handleAddToFavorites}>В избранное</Button>
+        <Button className="m-1" variant="primary" style={{ fontSize: '25px' }} onClick={handleAddToBasket}>В корзину</Button>
+      </div>
     </div>
   );
 }

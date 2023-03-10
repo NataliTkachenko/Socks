@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 // Компонент с формой входа в учётную запись
 export default function SignIn() {
@@ -24,15 +25,16 @@ export default function SignIn() {
           <input name="password" type="password" className="form-control" placeholder="Введите пароль" id="exampleInputPassword1" />
         </div>
         <div className="form-group mt-3">
-          <button
+          <Button
+            variant="primary"
             type="submit"
-            className="btn"
-            style={{
-              borderRadius: '13px', height: '40px', width: '100px', backgroundColor: '#554AF9', color: 'white', fontWeight: 'bold',
-            }}
+            className="form-group mt-3"
+            // style={{
+            //   borderRadius: '13px', height: '40px', width: '100px', backgroundColor: '#554AF9', color: 'white', fontWeight: 'bold',
+            // }}
           >
             Войти
-          </button>
+          </Button>
         </div>
       </div>
     </form>

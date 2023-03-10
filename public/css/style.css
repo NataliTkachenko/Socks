@@ -53,6 +53,12 @@
   transform: scale(1.2);
 }
 
+.icons {
+  height: 30px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
 .afterConstructor {
   margin-top: 300px;
 }

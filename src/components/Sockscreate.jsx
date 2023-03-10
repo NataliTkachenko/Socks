@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 export default function Sockscreate() {
-  let counter = 0;
+  const counter = 0;
   // const [color, setColor] = useState('#FFFFFF');
   // const [pattern, setPattern] = useState('');
   // const [image, setImage] = useState('');
@@ -26,20 +27,19 @@ export default function Sockscreate() {
   };
 
   const handleAddToFavorites = () => {
-  const existingCart = localStorage.getItem('fav');
-  const newCart = existingCart ? JSON.parse(existingCart) : [];
-  newCart.push(sock);
-  localStorage.setItem('fav', JSON.stringify(newCart));
-  window.location = '/favourites';
-
+    const existingCart = localStorage.getItem('fav');
+    const newCart = existingCart ? JSON.parse(existingCart) : [];
+    newCart.push(sock);
+    localStorage.setItem('fav', JSON.stringify(newCart));
+    window.location = '/favourites';
   };
 
   const handleAddToBasket = () => {
-  const existingCart = localStorage.getItem('cart');
-  const newCart = existingCart ? JSON.parse(existingCart) : [];
-  newCart.push(sock);
-  localStorage.setItem('cart', JSON.stringify(newCart));
-  window.location = '/cart';
+    const existingCart = localStorage.getItem('cart');
+    const newCart = existingCart ? JSON.parse(existingCart) : [];
+    newCart.push(sock);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    window.location = '/cart';
   };
 
   const colorCards = [
@@ -96,8 +96,11 @@ export default function Sockscreate() {
   ));
 
   return (
-    <>
-      <div>
+    <div style={{
+      display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '50px',
+    }}
+    >
+      <div style={{ justifyContent: 'center' }}>
         <h1>Твой дизайн:</h1>
         <div style={{ position: 'relative' }}>
           <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
@@ -118,8 +121,8 @@ export default function Sockscreate() {
         <h2>Выбери </h2>
         <div className="options">{renderImageCards()}</div>
       </div>
-      <button onClick={handleAddToFavorites}>В избранное</button>
-      <button onClick={handleAddToBasket}>В корзину</button>
-    </>
+      <Button className="m-1 " variant="primary" onClick={handleAddToFavorites}>В избранное</Button>
+      <Button className="m-1" variant="primary" onClick={handleAddToBasket}>В корзину</Button>
+    </div>
   );
 }

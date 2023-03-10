@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 export default function SignUp() {
   const [err, setError] = useState({});
@@ -36,15 +37,16 @@ export default function SignUp() {
         </div>
 
         <div className="form-group mt-3">
-          <button
+          <Button
+            variant="primary"
             type="submit"
             className="btn"
-            style={{
-              borderRadius: '13px', height: '40px', width: '200px', backgroundColor: '#1C8552', color: 'white', fontWeight: 'bold',
-            }}
+            // style={{
+            //   borderRadius: '13px', height: '40px', width: '200px', backgroundColor: '#1C8552', color: 'white', fontWeight: 'bold',
+            // }}
           >
             Зарегистрироваться
-          </button>
+          </Button>
         </div>
       </div>
     </form>

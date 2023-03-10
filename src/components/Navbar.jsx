@@ -55,27 +55,26 @@ export default function Navbar({ currentUser, setCurrentUser }) {
             {currentUser ? (
               <li className="nav-item">
                 {' '}
-                Hello
                 {' '}
                 {currentUser.name}
-                , my brother!
+                <img src="/Img/profile.png" alt="profile" style={{ height: '25px', marginRight: '25px', marginLeft: '25px'}} />
                 <button
                   type="button"
-                  className="btn btn-dark"
+                  className="btn btn-danger"
                   onClick={clickHandler}
                 >
-                  Logout
+                  Выход
                 </button>
               </li>
             ) : (
               <>
                 <li className="nav-item">
-                  <a href="/user/signup"><Button variant="primary" style={{ marginRight: '15px' }}>Зарегистрироваться</Button></a>
+                  <a href="/user/signup"><Button variant="primary" style={{ marginRight: '15px', fontSize: '22px' }}>Зарегистрироваться</Button></a>
                 </li>
                 <li className="nav-item">
                   <a href="/user/signin">
                     {' '}
-                    <Button variant="primary" style={{ marginRight: '25px' }}>Войти</Button>
+                    <Button variant="primary" style={{ marginRight: '25px', fontSize: '22px' }}>Войти</Button>
                   </a>
                 </li>
               </>

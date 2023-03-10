@@ -10,11 +10,11 @@ export default function SignIn() {
 
     axios.post('/user/signin', data)
       .then(() => {
-        window.location = '/';
+        window.location = '/cart';
       });
   };
   return (
-    <form className="row" style={{ width: '600px', marginLeft: '600px', marginTop: '120px' }} onSubmit={submitHandler}>
+    <form className="row"  onSubmit={submitHandler}>
       <div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Электронный адрес</label>

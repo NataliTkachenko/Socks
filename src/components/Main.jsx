@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import Footer from './Footer';
-import FooterLeonid from './FooterLeonid';
 
 export default function Main() {
   const styles = {
@@ -67,7 +66,6 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <FooterLeonid />
       <Footer />
     </>
   );

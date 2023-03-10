@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Form , Modal} from 'react-bootstrap';
-
+import btnStyles, {  Form, Card, Button, Modal, Row, Container, Col,} from 'react-bootstrap';
+import SignIn from '../Basket/SingInPage';
+import SignUp from '../Basket/SingUpPage';
 
 
 export default function Cart() {
@@ -8,6 +9,12 @@ export default function Cart() {
   const [show, setShow] = useState(false);
    const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+    const [signin, setSignin] = useState(false);
+ const [signup, setSignup] = useState(false);
+  //  const signInClose = () => setShow(false);
+  // const signInShow = () => setShow(true);
+  //   const signUpClose = () => setShow(false);
+  // const signUpShow = () => setShow(true);
 
   useEffect(() => {
     const sockData = localStorage.getItem('cart');
@@ -42,26 +49,20 @@ export default function Cart() {
  const signUP = () =>{
  window.location = '/user/signup';
  }
-  const signIn = () =>{
- window.location = '/user/signin';
- }
-  // const handleCreateOrder = () => {
-  //   console.log('Order created!');
-  // }
+//   const signIn = () =>{
+//  window.location = '/user/signin';
+//  }
 
   return (
-    <>
-      <section className="section-cart">
-        <header className="section-cart__header">
-          <div className="container">
-            <h1 className='title-1'>Корзина товаров</h1>
-          </div>
-        </header>
-        <div className="section-cart__body">
-          <div className="container">
-            <div>
+    <> 
+     <div style={{ textAlign: 'center' }}>
+  <h1 className='title-1'>Корзина</h1>
+</div>
+    <Container>
+  <Row md={4} style={{ display: 'flex', justifyContent: 'flex-start' }}>
+ 
               {socks.map((sock) => (
-                <Card key={sock.color}>
+                <Card key={sock.color} className="m-2">
                   <Card.Img variant="top" />
                   <div style={{ position: 'relative' }}>
                     <div style={{ position: 'absolute', backgroundColor: `${sock.color}` }} className="color" />
@@ -69,17 +70,23 @@ export default function Cart() {
                     <img style={{ position: 'absolute' }} className="pic" src={`${sock.image}`} alt="" />
                     <img style={{ position: 'absolute' }} className="sock" src="/Img/sock.png" alt="" />
                   </div>
+                   <div className="inFavorite">
                   <Card.Body>
                     <Card.Title>Носки</Card.Title>
                     <Card.Text>990 рублей</Card.Text>
-                    <div className="d-flex">
-                      <Form.Control type="number" className='afterConstructor' min={1} max={10} defaultValue={sock.qty||1} onChange={(e) => handleQtyChange(sock.color, e)} />
-                      <Button variant="danger" onClick={() => handleDeleteSock(sock.color)}>Удалить</Button>
-                    </div>
+                    
+                      <Form.Control type="number" min={1} max={10} defaultValue={sock.qty||1} onChange={(e) => handleQtyChange(sock.color, e)} />
+                      <Button className="m-2" variant="warning" style={{ marginLeft: '10px' }}onClick={() => handleDeleteSock(sock.color)}>Удалить</Button>
+          
                   </Card.Body>
+                  </div>
                 </Card>
               ))}
-               <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Оформить заказ</Button>
+                      </Row>
+      </Container>
+             <div style={{ textAlign: 'center' }}>
+  <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={handleShow}>Оформить заказ</Button>
+</div>
 
      <Modal show={show} onHide={handleClose}>
   <Modal.Header closeButton>
@@ -87,10 +94,8 @@ export default function Cart() {
   </Modal.Header>
   <Modal.Body>
     <div style={{ display: 'flex' }}>
-      <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={signUP}>Зарегистрироваться</Button>
-      <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={signIn}>Войти</Button>
-      {/* <button onClick={signUP}>Зарегистрироваться</button>
-        <button onClick={signIn}>Войти</button> */}
+      <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={()=>setSignup(true)}>Зарегистрироваться</Button>
+      <Button className="m-2" variant="primary" style={{ marginLeft: '10px' }} onClick={()=>setSignin(true)}>Войти</Button>
     </div>
   </Modal.Body>
   <Modal.Footer>
@@ -102,11 +107,42 @@ export default function Cart() {
 </Modal>
 
 
-      </div>
-      </div>
-           
-          </div>
-      </section>
+    <Modal show={signin} onHide={()=>setSignin(false)}>
+  <Modal.Header closeButton>
+    <Modal.Title>Войти</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+      <div style={{ display: 'center' }}>
+    <SignIn/>
+   </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="primary" onClick={()=>setSignin(false)}>
+      Закрыть
+    </Button>
+  </Modal.Footer>
+  
+</Modal>
+
+
+    <Modal show={signup} onHide={()=>setSignup(false)}>
+  <Modal.Header closeButton>
+    <Modal.Title> Зарегистрироваться</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <div style={{ display: 'left' }}>
+   <SignUp/>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="primary" onClick={()=>setSignup(false)}>
+      Закрыть
+    </Button>
+  </Modal.Footer>
+  
+</Modal>
+
+     
     </>
   )
 }

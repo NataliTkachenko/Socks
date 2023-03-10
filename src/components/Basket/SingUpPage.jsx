@@ -13,14 +13,14 @@ export default function SignUp() {
       return setError({ message: 'Password and username must be non-empty' });
     }
     axios.post('/user/signup', formData)
-      .then(() => { window.location = '/'; })
+      .then(() => { window.location = '/cart'; })
       .catch((error) => {
         console.log(error);
         setError();
       });
   };
   return (
-    <form className="row" style={{ width: '600px', marginLeft: '600px', marginTop: '120px' }} onSubmit={submitHandler}>
+    <form className="row"  onSubmit={submitHandler}>
       <div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>

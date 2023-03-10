@@ -50,11 +50,6 @@ app.get('/cart', (req, res) => {
   res.render('Layout', {});
 });
 
-// app.post('/cart', (req, res) => {
-//   //  const data  = req.body;
-//   //  console.log(data)
-//    res.send('/cart', {})
-// });
 
 app.get('/favourites', (req, res) => {
   res.render('Layout', {});
@@ -64,7 +59,7 @@ app.get('/sockscreate', (req, res) => {
   res.render('Layout', {});
 });
 
-// app.use('/api/auth', authRouter);
+
 
 app.get('/share', (req, res) => {
   res.render('Layout', {});

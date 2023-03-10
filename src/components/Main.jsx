@@ -1,5 +1,7 @@
 import React from 'react';
+import { Card, Button, Form } from 'react-bootstrap';
 import Footer from './Footer';
+import FooterLeonid from './FooterLeonid';
 
 export default function Main() {
   const styles = {
@@ -12,8 +14,6 @@ export default function Main() {
   };
 
   const btnStyles = {
-    backgroundColor: 'turquoise',
-    color: 'black',
     padding: '10px',
     borderRadius: '5px',
     border: 'none',
@@ -33,40 +33,41 @@ export default function Main() {
     justifyContent: 'space-around',
   };
 
-  const oneSock = {
-    width: '550px',
-    height: '450px',
-    paddingLeft: '5px',
-    paddingTop: '5px',
+  // const oneSock = {
+  //   width: '550px',
+  //   height: '450px',
+  //   paddingLeft: '5px',
+  //   paddingTop: '5px',
 
-  };
+  // };
 
   return (
     <>
       <div style={styles}>
         <h1>Самое время быть уникальным!</h1>
-        <a href="/sockscreate"><button style={btnStyles} type="submit">Смоделируй свою любимую пару носков!</button></a>
+        <a href="/sockscreate"><Button variant="primary" style={btnStyles} type="submit">Смоделируй свою любимую пару носков!</Button></a>
         <div style={socksCont}>
           <div>
-            <img src="./Img/socks/s1.png" style={oneSock} alt="sock1" />
+            <img src="./Img/socks/s1.png" alt="sock1" className="sockHov" />
           </div>
           <div>
-            <img src="./Img/socks/s2.png" style={oneSock} alt="sock2" />
+            <img src="./Img/socks/s2.png" alt="sock2" className="sockHov" />
           </div>
           <div>
-            <img src="./Img/socks/s3.png" style={oneSock} alt="sock3" />
+            <img src="./Img/socks/s3.png" alt="sock3" className="sockHov" />
           </div>
           <div>
-            <img src="./Img/socks/s4.png" style={oneSock} alt="sock4" />
+            <img src="./Img/socks/s4.png" alt="sock4" className="sockHov" />
           </div>
           <div>
-            <img src="./Img/socks/s5.png" style={oneSock} alt="sock5" />
+            <img src="./Img/socks/s5.png" alt="sock5" className="sockHov" />
           </div>
           <div>
-            <img src="./Img/socks/s6.png" style={oneSock} alt="sock6" />
+            <img src="./Img/socks/s6.png" alt="sock6" className="sockHov" />
           </div>
         </div>
       </div>
+      <FooterLeonid />
       <Footer />
     </>
   );

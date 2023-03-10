@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 export default function Navbar({ currentUser, setCurrentUser }) {
   const btnStyles = {
@@ -69,12 +70,12 @@ export default function Navbar({ currentUser, setCurrentUser }) {
             ) : (
               <>
                 <li className="nav-item">
-                  <a href="/user/signup"><button className="nav-link btn" style={btnStyles}>Зарегистрироваться</button></a>
+                  <a href="/user/signup"><Button variant="primary" style={{ marginRight: '15px' }}>Зарегистрироваться</Button></a>
                 </li>
                 <li className="nav-item">
                   <a href="/user/signin">
                     {' '}
-                    <button className="nav-link btn" style={btnStyles}>Войти</button>
+                    <Button variant="primary" style={{ marginRight: '25px' }}>Войти</Button>
                   </a>
                 </li>
               </>

@@ -1,39 +1,37 @@
-
 import React, { useState } from 'react';
+import { v1 as uuidv1 } from 'uuid';
 
 export default function Sockscreate() {
   const [sock, setSock] = useState({ color: '#FFFFFF', pattern: '', image: '' });
 
   const handleColorClick = (event) => {
     setSock((prev) => ({ ...prev, color: event.target.dataset.value }));
- 
   };
 
   const handlePatternClick = (event) => {
     setSock((prev) => ({ ...prev, pattern: event.target.src }));
- 
   };
 
   const handleImageClick = (event) => {
     setSock((prev) => ({ ...prev, image: event.target.src }));
-   
   };
 
   const handleAddToFavorites = () => {
-  const existingCart = localStorage.getItem('fav');
-  const newCart = existingCart ? JSON.parse(existingCart) : [];
-  newCart.push(sock);
-  localStorage.setItem('fav', JSON.stringify(newCart));
-  window.location = '/favourites';
-
+    const existingCart = localStorage.getItem('fav');
+    const newCart = existingCart ? JSON.parse(existingCart) : [];
+    const id = uuidv1();
+    newCart.push({ id, ...sock });
+    localStorage.setItem('fav', JSON.stringify(newCart));
+    window.location = '/favourites';
   };
 
   const handleAddToBasket = () => {
-  const existingCart = localStorage.getItem('cart');
-  const newCart = existingCart ? JSON.parse(existingCart) : [];
-  newCart.push(sock);
-  localStorage.setItem('cart', JSON.stringify(newCart));
-  window.location = '/cart';
+    const existingCart = localStorage.getItem('cart');
+    const newCart = existingCart ? JSON.parse(existingCart) : [];
+    const id = uuidv1();
+    newCart.push({ id, ...sock });
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    window.location = '/cart';
   };
 
   const colorCards = [

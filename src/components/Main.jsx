@@ -30,7 +30,7 @@ export default function Main() {
     display: 'flex',
     flexWrap: 'wrap',
     paddingRight: '10px',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
   };
 
   // const oneSock = {
